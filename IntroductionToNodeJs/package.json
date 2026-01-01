@@ -8,10 +8,11 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "",
+  "description": "Node.js is a JavaScript runtime built on Chrome's V8 JavaScript engine. It allows developers to run JavaScript code outside of a browser, making it possible to build scalable server-side and networking applications. Node.js uses an event-driven, non-blocking I/O model, which makes it lightweight and efficient for data-intensive real-time applications.",
   "dependencies": {
     "dotenv": "^17.2.3",
     "express": "^5.2.1",
     "nodemon": "^3.1.11"
-  }
+  },
+  "devDependencies": {}
 }
