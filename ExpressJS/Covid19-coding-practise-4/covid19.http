@@ -1,0 +1,64 @@
+### Get all states
+GET http://localhost:3000/states/
+Content-Type: application/json
+
+### Add a new state
+POST http://localhost:3000/states/
+Content-Type: application/json
+
+{
+	"stateName": "Kerala",
+	"population": 35000000
+}
+
+### Get a state by ID
+GET http://localhost:3000/states/1/
+Content-Type: application/json
+
+### Update a state by ID
+PUT http://localhost:3000/states/1/
+Content-Type: application/json
+
+{
+	"stateName": "Karnataka Updated",
+	"population": 62000000
+}
+
+### Delete a state by ID
+DELETE http://localhost:3000/states/1/
+Content-Type: application/json
+
+### Add a new district
+POST http://localhost:3000/districts/
+Content-Type: application/json
+
+{
+	"districtName": "Thrissur",
+	"stateId": 4,
+	"cases": 5000,
+	"cured": 4800,
+	"active": 150,
+	"deaths": 50
+}
+
+### Get a district by ID
+GET http://localhost:3000/districts/1/
+Content-Type: application/json
+
+### Update a district by ID
+PUT http://localhost:3000/districts/1/
+Content-Type: application/json
+
+{
+	"districtName": "Bangalore Urban Updated",
+	"stateId": 1,
+	"cases": 105000,
+	"cured": 100000,
+	"active": 3500,
+	"deaths": 1500
+}
+
+### Delete a district by ID
+DELETE http://localhost:3000/districts/2/
+Content-Type: application/json
+

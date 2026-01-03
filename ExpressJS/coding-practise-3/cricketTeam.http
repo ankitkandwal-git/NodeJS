@@ -1,0 +1,30 @@
+
+# Get all players
+GET http://localhost:3000/players/
+
+###
+# Add a new player
+POST http://localhost:3000/players/
+Content-Type: application/json
+
+{
+  "name": "Virat Kohli",
+  "jerseyNumber": 18,
+  "role": "Batsman",
+  "country": "India",
+  "team": "India",
+  "totalCentury": 77,
+  "wickets": 4
+}
+
+###
+# Get a player by ID (replace 1 with actual playerId)
+GET http://localhost:3000/players/1/
+
+###
+# Delete a player by ID (replace 1 with actual playerId)
+DELETE http://localhost:3000/players/1/
+
+GET http://localhost:3000/players/1/
+
+
