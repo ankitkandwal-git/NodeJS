@@ -1,0 +1,37 @@
+ 
+# Get all todos (with optional filters)
+GET http://localhost:3000/todos/?search_q=&status=&priority=
+Content-Type: application/json
+
+###
+# Get a specific todo by ID
+GET http://localhost:3000/todos/1/
+Content-Type: application/json
+
+###
+# Create a new todo
+POST http://localhost:3000/todos/
+Content-Type: application/json
+
+{
+	"id": 1,
+	"todo": "Sample Task",
+	"priority": "HIGH",
+	"status": "IN PROGRESS"
+}
+
+###
+# Update a todo by ID
+PUT http://localhost:3000/todos/1/
+Content-Type: application/json
+
+{
+	"todo": "Updated Task",
+	"priority": "LOW",
+	"status": "DONE"
+}
+
+###
+# Delete a todo by ID
+DELETE http://localhost:3000/todos/1/
+Content-Type: application/json
