@@ -1,0 +1,17 @@
+### Create User
+POST http://localhost:3000/users
+Content-Type: application/json
+
+{
+  "name": "Rahul",
+  "username": "rahul",
+  "password": "rahul@2021",
+  "gender": "Male",
+  "location": "Hyderabad"
+}
+
+### Get All Users
+GET http://localhost:3000/users
+
+### Get User by Username
+GET http://localhost:3000/users/rahul
