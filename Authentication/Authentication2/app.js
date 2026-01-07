@@ -26,6 +26,11 @@ initializeDBAndServer()
 // API 1 Register User
 
 app.post('/users/',async(request,response) =>{
+    let jwtToken = null;
+    const authHeader = request.headers["authorization"];
+    if(authHeader !== undefined){
+        jwtToken = authHeader.split(" ")[1];
+    }
     const {username,password} = request.body;
     const hashedPassword = await bcrypt.hash(password,10)
     const selectUserQuery = `SELECT * FROM user WHERE username = '${username}';`;
