@@ -47,6 +47,7 @@ app.post('/users/',async(request,response) =>{
  
 // AP1 2 Login User
 app.post('/login/',async(request,response) =>{
+    let jwtToken = null;
     const {username,password} = request.body;
     const selectUserQuery = `SELECT * FROM user WHERE username = '${username}';`;
     const dbUser = await db.get(selectUserQuery);
@@ -56,7 +57,9 @@ app.post('/login/',async(request,response) =>{
     else{
         const isPasswordMatched = await bcrypt.compare(password,dbUser.password)
         if(isPasswordMatched === true){
-            response.send("Login Success!")
+            const payload = {username : username}
+            const jwtToken = jwt.sign(payload,"MY_SECRET_KEY")
+            response.send({jwtToken})
         }else{
             response.status(400).send("Invalid Password")
         }
