@@ -1,0 +1,83 @@
+### Authentication & Authorization - Patient Management API
+
+## 1. LOGIN (Get JWT Token)
+POST http://localhost:3000/login
+Content-Type: application/json
+
+{
+  "username": "admin",
+  "password": "admin123"
+}
+
+###
+
+## 2. LOGIN as Staff Member
+POST http://localhost:3000/login
+Content-Type: application/json
+
+{
+  "username": "staff1",
+  "password": "staff123"
+}
+
+###
+
+## 3. GET All Patients (Requires Authentication)
+# Use token from login response
+GET http://localhost:3000/patients
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+
+###
+
+## 4. GET Patient by ID
+GET http://localhost:3000/patients/1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+
+###
+
+## 5. POST - Add New Patient (Admin Only)
+POST http://localhost:3000/patients
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+
+{
+  "patient_name": "Sandeep Kumar",
+  "age": 40,
+  "gender": "M",
+  "contact_number": "9876543218",
+  "email": "sandeep.kumar@email.com",
+  "admission_date": "2025-01-10",
+  "medical_condition": "Kidney Issue",
+  "room_number": "109",
+  "bed_number": "D",
+  "status": "Active"
+}
+
+###
+
+## 6. PUT - Update Patient (Admin Only)
+PUT http://localhost:3000/patients/1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+
+{
+  "patient_name": "Rajesh Kumar Singh",
+  "medical_condition": "Cardiac Issue - Stable",
+  "status": "Stable"
+}
+
+###
+
+## 7. DELETE Patient (Admin Only)
+DELETE http://localhost:3000/patients/8
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+
+###
+
+## NOTES:
+## - Admin credentials: username: admin, password: admin123
+## - Staff credentials: username: staff1, password: staff123
+## - GET, PUT, DELETE require admin role
+## - GET requires authentication (admin or staff can view)
+## - POST, PUT, DELETE can only be done by admin
+## - All requests require valid JWT token in Authorization header
