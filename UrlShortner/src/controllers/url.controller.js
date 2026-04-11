@@ -1,4 +1,4 @@
-const { createShortUrlService } = require('../services/url.services');
+const { createShortUrlService,getService} = require('../services/url.services');
 const shortUrlService = require('../services/url.services');
 const createShortUrl = async (req, res) => {
     const { longUrl } = req.body;
@@ -14,22 +14,32 @@ const createShortUrl = async (req, res) => {
     }
 };
 
-const redirectUrl = async(req,res) =>{
+const { getShortUrlService } = require('../services/url.services');
+
+const redirectUrl = async (req, res) => {
+    const { shortCode } = req.params;
+
+    try {
+        const db = req.app.locals.db;
+
+        const longUrl = await getShortUrlService(db, shortCode);
+        return res.redirect(longUrl);
+    } catch (err) {
+        return res.status(404).json({ error: 'Short URL not found' });
+    }
+};
+const getStats = async(req,res) =>{
     const { shortCode } = req.params;
     try{
         const db = req.app.locals.db;
-        const urlData = await shortUrlService.getUrlCode(db, shortCode);
-        if(urlData){
-            res.redirect(urlData.originalUrl);
-            console.log("CODE:", req.params.code);
-        }else{
-            res.status(404).json({ error: 'Short URL not found' });
-        }
-    } catch (err) {
+        const stats = await getService(db,shortCode);
+        res.json(stats);
+    }catch(err){
         res.status(500).json({ error: 'Internal server error' });
     }
-};
+}
 module.exports = {
     createShortUrl,
-    redirectUrl
+    redirectUrl,
+    getStats
 };

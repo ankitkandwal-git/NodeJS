@@ -7,9 +7,11 @@ const path = require('path')
 const dbPath = path.join(__dirname, 'db.sql')
 const fs = require('fs')
 app.use(express.json())
-
+const {connectRedis} = require('./config/redis')
 const initializeDBAndServer = async () =>{
     try {
+        // connect to Redis before DB startup (no top-level await)
+        await connectRedis();
         // Use a single DB file at the project root so CLI and app use same file
         const dbFile = path.join(__dirname, '..', 'urlshortner.db')
         const db = await open({
