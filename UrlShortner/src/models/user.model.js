@@ -7,6 +7,7 @@ const createUrl = async (db, { shortCode, longUrl, shortUrl }) => {
   await db.run(query, [shortCode, longUrl, shortUrl]);
 };
 
+const getUrlCode = async()
 module.exports = {
   createUrl
 };
