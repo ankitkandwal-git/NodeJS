@@ -64,3 +64,8 @@ app.post('/login/',async(request,response) =>{
         }
     }
 })
+
+// API 3 
+app.get('/user/tweets/feed/',async(request,response) =>{
+    const getTweetsQuery = `SELECT * FROM tweet  WHERE `
+})

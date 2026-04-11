@@ -1,0 +1,7 @@
+CREATE TABLE IF NOT EXISTS urls(
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  shortCode TEXT UNIQUE,
+  originalUrl TEXT,
+  shortUrl TEXT,
+  clicks INTEGER DEFAULT 0
+);
