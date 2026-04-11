@@ -38,7 +38,7 @@ This repository contains multiple Node.js projects and practice assignments, org
 ## Notes
 - Each subfolder may contain its own `README.md` with more details.
 - SQL and HTTP files are provided for database seeding and API testing.
-- Projects are for educational and practice purposes.
+- Projects are for educational and practice purposes..
 
 ---
 
